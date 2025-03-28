@@ -1,0 +1,25 @@
+{
+  "name": "fastify-backend",
+  "version": "1.0.0",
+  "description": "A Fastify backend server utilizing OpenAPI 3",
+  "main": "src/app.ts",
+  "scripts": {
+    "start": "ts-node src/app.ts",
+    "build": "tsc",
+    "dev": "ts-node-dev src/app.ts"
+  },
+  "dependencies": {
+    "fastify": "^4.0.0",
+    "fastify-swagger": "^6.0.0",
+    "fastify-openapi-glue": "^4.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.0.0",
+    "ts-node": "^10.0.0",
+    "ts-node-dev": "^1.0.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "license": "MIT"
+}

@@ -1,0 +1,22 @@
+{
+  "name": "be-server",
+  "version": "1.0.0",
+  "description": "hobby server",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/evansmithxyz/be-server.git"
+  },
+  "author": "Evan Smith",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/evansmithxyz/be-server/issues"
+  },
+  "homepage": "https://github.com/evansmithxyz/be-server#readme",
+  "dependencies": {
+    "fastify": "^5.2.2"
+  }
+}
