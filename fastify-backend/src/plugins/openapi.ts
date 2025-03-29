@@ -1,56 +1,53 @@
 import { FastifyPluginAsync } from 'fastify';
-import { OpenAPIV3 } from 'openapi-types';
-
-const openapiSpecification: OpenAPIV3.Document = {
-  openapi: '3.0.0',
-  info: {
-    title: 'Fastify Backend API',
-    version: '1.0.0',
-    description: 'A Fastify backend server utilizing OpenAPI 3 for API documentation and validation.',
-  },
-  paths: {
-    '/example': {
-      get: {
-        summary: 'Get example data',
-        operationId: 'getExample',
-        responses: {
-          '200': {
-            description: 'Successful response',
-            content: {
-              'application/json': {
-                schema: {
-                  $ref: '#/components/schemas/ExampleSchema',
-                },
-              },
-            },
-          },
-        },
-      },
-    },
-  },
-  components: {
-    schemas: {
-      ExampleSchema: {
-        type: 'object',
-        properties: {
-          id: {
-            type: 'string',
-          },
-          name: {
-            type: 'string',
-          },
-        },
-        required: ['id', 'name'],
-      },
-    },
-  },
-};
+import swagger from '@fastify/swagger';
+import swaggerUi from '@fastify/swagger-ui';
 
 const openapiPlugin: FastifyPluginAsync = async (fastify) => {
-  fastify.register(require('fastify-swagger'), {
-    routePrefix: '/documentation',
-    swagger: openapiSpecification,
-    exposeRoute: true,
+  // Register Swagger (OpenAPI 3.0) plugin
+  fastify.register(swagger, {
+    openapi: {
+      info: {
+        title: 'Fitness Tracker API',
+        description: 'API documentation for the Fitness Tracker project',
+        version: '1.0.0',
+      },
+      servers: [
+        {
+          url: 'http://localhost:3000',
+          description: 'Local development server',
+        },
+        {
+          url: 'http://localhost:8080', // Backend URL
+          description: 'Local development server',
+        },
+      ],
+      components: {}, // Add reusable components like schemas or security here
+      tags: [
+        {
+          name: 'Auth',
+          description: 'Authentication-related endpoints',
+        },
+        {
+          name: 'Example',
+          description: 'Example endpoints',
+        },
+        {
+          name: 'User',
+          description: 'Operations related to users',
+        },
+        {
+          name: 'Workout',
+          description: 'Operations related to workouts',
+        },
+      ],
+    },
+  });
+
+  // Register Swagger UI plugin
+  fastify.register(swaggerUi, {
+    routePrefix: '/docs', // Swagger UI will be available at http://localhost:3000/docs
+    staticCSP: true,
+    transformStaticCSP: (header) => header,
   });
 };
 

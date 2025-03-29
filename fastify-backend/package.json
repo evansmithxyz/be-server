@@ -9,14 +9,21 @@
     "dev": "ts-node-dev src/app.ts"
   },
   "dependencies": {
-    "fastify": "^4.0.0",
-    "fastify-swagger": "^6.0.0",
-    "fastify-openapi-glue": "^4.0.0"
+    "@fastify/cors": "^11.0.1",
+    "@fastify/swagger": "^9.4.2",
+    "@fastify/swagger-ui": "^5.2.2",
+    "@prisma/client": "^6.5.0",
+    "bcrypt": "^5.1.1",
+    "dotenv": "^16.4.7",
+    "jsonwebtoken": "^9.0.2"
   },
   "devDependencies": {
-    "typescript": "^4.0.0",
+    "@types/bcrypt": "^5.0.2",
+    "@types/jsonwebtoken": "^9.0.9",
+    "prisma": "^6.5.0",
     "ts-node": "^10.0.0",
-    "ts-node-dev": "^1.0.0"
+    "ts-node-dev": "^1.0.0",
+    "typescript": "^5.8.2"
   },
   "engines": {
     "node": ">=14.0.0"
